@@ -1,4 +1,4 @@
-/* 
+/*
   post unscheduled mailings for a given date to the channel from actionkit using /timer slash command
   curl -X POST http://localhost:3000/timer --data "user_name=jin&token=cVq5pNlL3f76yEBsRxKuGMpP&text=2015-08-15"
   INCOMING_WEBHOOK_PATH=/your/path/tokens node app
@@ -28,7 +28,7 @@ module.exports = function (req, res, next) {
       }, function(error, response, body){
           if (response && response.statusCode && response.statusCode == 200) {
               console.log('no errors ' + response.statusCode + ' ' + body);
-              var reportResponse = JSON.parse(body);              
+              var reportResponse = JSON.parse(body);
               var attachments = [];
               var firstLine = '';
 
@@ -54,6 +54,7 @@ module.exports = function (req, res, next) {
                   case 'Nicole Regalado': slackname = '@nregalado - '; break;
                   case 'Brandy Doyle': slackname = '@bdoyle - '; break;
                   case 'Kaili Lambe': slackname = '@klambe - '; break;
+                  case 'Lianna McSwain': slackname = '@lmcswain - '; break;
                   default: slackname = '';
                 }
 
@@ -62,7 +63,7 @@ module.exports = function (req, res, next) {
                               fields.notes + '\n' +
                               'NOT ON TIMER ' + fields.sender + '\n' +
                               'expectedSendCount ' + formatNumber(fields.expectedSendCount);
-                
+
                 attachments.push({
                   'fallback': fallback,
                   'color': 'danger',
@@ -121,7 +122,7 @@ module.exports = function (req, res, next) {
 }
 
 function send (payload, callback) {
-  
+
   var path = process.env.INCOMING_WEBHOOK_PATH; // set in heroku config vars under settings
   var uri = 'https://hooks.slack.com/services' + path;
 
