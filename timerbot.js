@@ -43,7 +43,7 @@ module.exports = function (req, res, next) {
                 };
 
                 if (i==0)
-                  firstLine = 'Timer reminders for ' + requestDate + ' cc @Eric Hilton:\n';
+                  firstLine = 'Timer reminders for ' + requestDate + ' cc <UJAKF8XND>:\n';
                 else firstLine = '';
 
                 var slackname = '';
